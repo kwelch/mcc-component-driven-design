@@ -1,6 +1,7 @@
 {
-  "name": "spectacle-boilerplate",
-  "version": "1.0.1",
+  "name": "mcc-component-driven-design",
+  "private": true,
+  "version": "1.0.0",
   "description": "ReactJS Powered Presentation Framework",
   "main": "lib/index.js",
   "scripts": {
@@ -10,8 +11,7 @@
     "deploy": "npm run clean & npm run build && surge -p .",
     "start": "cross-env NODE_ENV=development node server.js"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Kyle Welch (kwelch0626@gmail.com)",
   "dependencies": {
     "normalize.css": "3.0.3",
     "react": "15.4.2",
