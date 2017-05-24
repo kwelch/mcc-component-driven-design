@@ -1,0 +1,16 @@
+// classic css
+
+button {
+  border-radius: 7px;
+  background: #ededed !important;
+  border: 2px solid #9a9a9a;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  font-size: 20px;
+}
+
+.my-button {
+  background: red;
+  border-color: black;
+  color:white;
+}

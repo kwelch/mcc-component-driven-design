@@ -2,7 +2,22 @@
 import React from "react";
 
 // Import Spectacle Core tags
-import { Appear, Markdown, Deck, Image, Heading, ListItem, List, Slide, Text, Layout, Fill } from "spectacle";
+import {
+  Appear,
+  Markdown,
+  CodePane,
+  Deck,
+  Image,
+  Heading,
+  ListItem,
+  List,
+  Slide,
+  Text,
+  Layout,
+  Fill,
+  Link,
+  ComponentPlayground,
+} from "spectacle";
 
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
@@ -27,6 +42,7 @@ const theme = createTheme(
     secondary: "#1F2022",
     tertiary: "#03A9FC",
     quartenary: "#CECECE",
+    codePaneBg: "#2d2d2d",
   },
   {
     primary: "Montserrat",
@@ -82,7 +98,7 @@ export default class Presentation extends React.Component {
           bgColor="primary"
           notes={`<ul>
           <li>History of styling</li>
-          <li>Compare and learn their advantages<li>
+          <li>Compare and learn their advantages</li>
         </ul>`}
         >
           <Heading fit textColor="tertiary">What is this talk?</Heading>
@@ -90,6 +106,31 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>- Overview of styling over time</ListItem></Appear>
             <Appear><ListItem>- Comparision of new styling approaches</ListItem></Appear>
           </List>
+        </Slide>
+        <Slide transition={["slide"]} bgColor="codePaneBg">
+          <Heading textColor="tertiary">History of CSS</Heading>
+          <Text textColor="primary">(Abridged)</Text>
+          <Layout>
+            <Fill>
+              <Appear>
+                <CodePane
+                  lang="css"
+                  source={require("raw-loader!../assets/old-school.css.example")}
+                  margin="20px auto"
+                />
+              </Appear>
+            </Fill>
+            <Fill>
+              <Appear>
+                <CodePane lang="css" source={require("raw-loader!../assets/bem.css.example")} margin="20px auto" />
+              </Appear>
+            </Fill>
+            <Fill>
+              <Appear>
+                <CodePane lang="css" source={require("raw-loader!../assets/sass.example")} margin="20px auto" />
+              </Appear>
+            </Fill>
+          </Layout>
         </Slide>
       </Deck>
     );
