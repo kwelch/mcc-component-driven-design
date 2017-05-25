@@ -5,6 +5,7 @@ import React from "react";
 import {
   Appear,
   Markdown,
+  SlideSet,
   CodePane,
   Deck,
   Image,
@@ -12,6 +13,7 @@ import {
   ListItem,
   List,
   Slide,
+  Interactive,
   Text,
   Layout,
   Fill,
@@ -32,6 +34,7 @@ require("spectacle/lib/themes/default/index.css");
 const images = {
   twitterLogo: require("../assets/twitter-logo.svg"),
   githubLogo: require("../assets/GitHub-Mark-120px-plus.png"),
+  cssModulesLogo: require("../assets/css-modules-logo.png"),
 };
 
 preloader(images);
@@ -90,6 +93,7 @@ export default class Presentation extends React.Component {
           <Heading fit textColor="secondary">What this talk is NOT?</Heading>
           <List style={{ listStyleType: "none" }}>
             <Appear><ListItem>- Declaring a champion</ListItem></Appear>
+            <Appear><ListItem>- How to Implement</ListItem></Appear>
             <Appear><ListItem>- Q&A</ListItem></Appear>
           </List>
         </Slide>
@@ -143,13 +147,14 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
         <Slide
-          transition={["slide"]}
+          transition={["zoom"]}
           bgColor="codePaneBg"
           notes={`<ul>
           <li>View Library that takes attributes and creates a view</li>
           <li>brought html into our js</li>
           <li>Splified example, has lifecycle method and much more</li>
           <li>Update code to show custom title</li>
+          <li>Show inline styles - first look at css-in-js</li>
           </ul>`}
         >
           <Heading margin="0 auto 2rem" fit textColor="primary">Then came React</Heading>
@@ -167,6 +172,22 @@ export default class Presentation extends React.Component {
 
 render(<App />, mountNode);`}
           />
+        </Slide>
+        <Slide
+          transition={["slide"]}
+          notes={`<ul>
+          <li>File Scoped, no more global scope or BEM practices</li>
+          <li>Inheritance</li>
+          <li>Requires a build step with webpack or browserify</li>
+          <li>Object notation allows for easy looks ups</li>
+          </ul>`}
+        >
+          <Image src={images.cssModulesLogo} width={200} />
+          <List textColor="secondary" style={{ listStyleType: "none" }}>
+            <Appear><ListItem>- Scoped class names</ListItem></Appear>
+            <Appear><ListItem>- Composes</ListItem></Appear>
+            <Appear><ListItem>- Requires Build Step</ListItem></Appear>
+          </List>
         </Slide>
       </Deck>
     );
