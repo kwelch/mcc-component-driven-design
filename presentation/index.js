@@ -53,6 +53,8 @@ const theme = createTheme(
   }
 );
 
+const SmallListItem = ({ style, ...rest }) => <ListItem {...rest} style={{ ...style, fontSize: "1.75rem" }} />;
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -110,7 +112,7 @@ export default class Presentation extends React.Component {
           <List style={{ listStyleType: "none" }}>
             <Appear><ListItem>- Overview of styling over time</ListItem></Appear>
             <Appear><ListItem>- Comparision of new styling approaches</ListItem></Appear>
-            <Appear><ListItem>- Based on React development</ListItem></Appear>
+            <Appear><ListItem>- Slightly baised toward React 😉</ListItem></Appear>
           </List>
         </Slide>
         <Slide
@@ -188,6 +190,130 @@ render(<App />, mountNode);`}
             <Appear><ListItem>- Composes</ListItem></Appear>
             <Appear><ListItem>- Requires Build Step</ListItem></Appear>
           </List>
+        </Slide>
+        <Slide
+          bgColor="tertiary"
+          transition={["fade"]}
+          notes={`<ul>
+          <li>All css-in-js libraries as listed in the GH repo</li>
+          <li>Notice all the instances of React</li>
+          </ul>`}
+        >
+          <Heading textColor="primary" fit>css-in-js</Heading>
+          <List style={{ listStyleType: "none", display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
+            <SmallListItem>- aphrodite</SmallListItem>
+            <SmallListItem>- babel-plugin-css-in-js</SmallListItem>
+            <SmallListItem>- bloody-react-styled</SmallListItem>
+            <SmallListItem>- classy</SmallListItem>
+            <SmallListItem>- csjs</SmallListItem>
+            <SmallListItem>- css-constructor</SmallListItem>
+            <SmallListItem>- css-loader</SmallListItem>
+            <SmallListItem>- css-ns</SmallListItem>
+            <SmallListItem>- cssobj</SmallListItem>
+            <SmallListItem>- cssx-loader</SmallListItem>
+            <SmallListItem>- es-css-modules</SmallListItem>
+            <SmallListItem>- glamor</SmallListItem>
+            <SmallListItem>- glamorous</SmallListItem>
+            <SmallListItem>- hyperstyles</SmallListItem>
+            <SmallListItem>- j2c</SmallListItem>
+            <SmallListItem>- jsxstyle</SmallListItem>
+            <SmallListItem>- pre-style</SmallListItem>
+            <SmallListItem>- radium</SmallListItem>
+            <SmallListItem>- react-css-builder</SmallListItem>
+            <SmallListItem>- react-css-components</SmallListItem>
+            <SmallListItem>- react-css-modules</SmallListItem>
+            <SmallListItem>- react-cxs</SmallListItem>
+            <SmallListItem>- react-fela</SmallListItem>
+            <SmallListItem>- react-free-style</SmallListItem>
+            <SmallListItem>- react-inline-css</SmallListItem>
+            <SmallListItem>- react-inline-style</SmallListItem>
+            <SmallListItem>- react-inline</SmallListItem>
+            <SmallListItem>- react-jss</SmallListItem>
+            <SmallListItem>- react-look</SmallListItem>
+            <SmallListItem>- react-native-web</SmallListItem>
+            <SmallListItem>- react-statics-styles</SmallListItem>
+            <SmallListItem>- react-styl</SmallListItem>
+            <SmallListItem>- react-style</SmallListItem>
+            <SmallListItem>- react-styleable</SmallListItem>
+            <SmallListItem>- react-stylematic</SmallListItem>
+            <SmallListItem>- react-theme</SmallListItem>
+            <SmallListItem>- react-vstyle</SmallListItem>
+            <SmallListItem>- reactcss</SmallListItem>
+            <SmallListItem>- scope-styles</SmallListItem>
+            <SmallListItem>- smart-css</SmallListItem>
+            <SmallListItem>- stile + react-media-queries</SmallListItem>
+            <SmallListItem>- stilr</SmallListItem>
+            <SmallListItem>- style-it</SmallListItem>
+            <SmallListItem>- styled-components</SmallListItem>
+            <SmallListItem>- styled-jsx</SmallListItem>
+            <SmallListItem>- styletron-react</SmallListItem>
+            <SmallListItem>- styling</SmallListItem>
+            <SmallListItem>- typestyle</SmallListItem>
+            <SmallListItem>- uranium</SmallListItem>
+          </List>
+          <Text textColor="primary" textSize="1rem">Source: https://github.com/MicheleBertoli/css-in-js</Text>
+        </Slide>
+        <Slide
+          bgColor="tertiary"
+          transition={["fade"]}
+          notes={`<ul>
+          <li>here is what we will focus on</li>
+          <li>Unique approached and adoption</li>
+          </ul>`}
+        >
+          <Heading textColor="primary" fit>css-in-js</Heading>
+          <List style={{ listStyleType: "none", display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
+            <SmallListItem>- aphrodite</SmallListItem>
+            <SmallListItem>- babel-plugin-css-in-js</SmallListItem>
+            <SmallListItem>- bloody-react-styled</SmallListItem>
+            <SmallListItem>- classy</SmallListItem>
+            <SmallListItem>- csjs</SmallListItem>
+            <SmallListItem>- css-constructor</SmallListItem>
+            <SmallListItem>- css-loader</SmallListItem>
+            <SmallListItem>- css-ns</SmallListItem>
+            <SmallListItem>- cssobj</SmallListItem>
+            <SmallListItem>- cssx-loader</SmallListItem>
+            <SmallListItem>- es-css-modules</SmallListItem>
+            <SmallListItem>- glamor</SmallListItem>
+            <SmallListItem textColor="primary">- glamorous</SmallListItem>
+            <SmallListItem>- hyperstyles</SmallListItem>
+            <SmallListItem>- j2c</SmallListItem>
+            <SmallListItem>- jsxstyle</SmallListItem>
+            <SmallListItem>- pre-style</SmallListItem>
+            <SmallListItem>- radium</SmallListItem>
+            <SmallListItem>- react-css-builder</SmallListItem>
+            <SmallListItem>- react-css-components</SmallListItem>
+            <SmallListItem>- react-css-modules</SmallListItem>
+            <SmallListItem>- react-cxs</SmallListItem>
+            <SmallListItem>- react-fela</SmallListItem>
+            <SmallListItem>- react-free-style</SmallListItem>
+            <SmallListItem>- react-inline-css</SmallListItem>
+            <SmallListItem>- react-inline-style</SmallListItem>
+            <SmallListItem>- react-inline</SmallListItem>
+            <SmallListItem>- react-jss</SmallListItem>
+            <SmallListItem>- react-look</SmallListItem>
+            <SmallListItem>- react-native-web</SmallListItem>
+            <SmallListItem>- react-statics-styles</SmallListItem>
+            <SmallListItem>- react-styl</SmallListItem>
+            <SmallListItem>- react-style</SmallListItem>
+            <SmallListItem>- react-styleable</SmallListItem>
+            <SmallListItem>- react-stylematic</SmallListItem>
+            <SmallListItem>- react-theme</SmallListItem>
+            <SmallListItem>- react-vstyle</SmallListItem>
+            <SmallListItem>- reactcss</SmallListItem>
+            <SmallListItem>- scope-styles</SmallListItem>
+            <SmallListItem>- smart-css</SmallListItem>
+            <SmallListItem>- stile + react-media-queries</SmallListItem>
+            <SmallListItem>- stilr</SmallListItem>
+            <SmallListItem>- style-it</SmallListItem>
+            <SmallListItem textColor="primary">- styled-components</SmallListItem>
+            <SmallListItem>- styled-jsx</SmallListItem>
+            <SmallListItem>- styletron-react</SmallListItem>
+            <SmallListItem>- styling</SmallListItem>
+            <SmallListItem>- typestyle</SmallListItem>
+            <SmallListItem>- uranium</SmallListItem>
+          </List>
+          <Text textColor="primary" textSize="1rem">Source: https://github.com/MicheleBertoli/css-in-js</Text>
         </Slide>
       </Deck>
     );
