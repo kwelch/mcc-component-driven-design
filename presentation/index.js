@@ -83,14 +83,14 @@ export default class Presentation extends React.Component {
           transition={["fade"]}
           bgColor="quartenary"
           notes={`<ul>
-            <li>I would love to talk to all of you. Find me, we will talk ;)</li>
             <li>There is no silver bullet, be open to any solution</li>
+            <li>I would love to talk to all of you. Find me, we will talk ;)</li>
           </ul>`}
         >
           <Heading fit textColor="secondary">What this talk is NOT?</Heading>
           <List style={{ listStyleType: "none" }}>
-            <Appear><ListItem>- Q&A</ListItem></Appear>
             <Appear><ListItem>- Declaring a champion</ListItem></Appear>
+            <Appear><ListItem>- Q&A</ListItem></Appear>
           </List>
         </Slide>
         <Slide
@@ -99,15 +99,25 @@ export default class Presentation extends React.Component {
           notes={`<ul>
           <li>History of styling</li>
           <li>Compare and learn their advantages</li>
+          <li>Based on React, but hopefully will inspire different prespective</li>
         </ul>`}
         >
           <Heading fit textColor="tertiary">What is this talk?</Heading>
           <List style={{ listStyleType: "none" }}>
             <Appear><ListItem>- Overview of styling over time</ListItem></Appear>
             <Appear><ListItem>- Comparision of new styling approaches</ListItem></Appear>
+            <Appear><ListItem>- Based on React development</ListItem></Appear>
           </List>
         </Slide>
-        <Slide transition={["slide"]} bgColor="codePaneBg">
+        <Slide
+          transition={["slide"]}
+          bgColor="codePaneBg"
+          notes={`<ul>
+          <li>OG CSS - Global Namespace, loads of !important, naming and collision issues</li>
+          <li>BEM - Better, still global, but better name collision</li>
+          <li>SASS - Variables, mixins, nesting, but requires preprocessing step</li>
+          </ul>`}
+        >
           <Heading textColor="tertiary">History of CSS</Heading>
           <Text textColor="primary">(Abridged)</Text>
           <Layout>
@@ -131,6 +141,32 @@ export default class Presentation extends React.Component {
               </Appear>
             </Fill>
           </Layout>
+        </Slide>
+        <Slide
+          transition={["slide"]}
+          bgColor="codePaneBg"
+          notes={`<ul>
+          <li>View Library that takes attributes and creates a view</li>
+          <li>brought html into our js</li>
+          <li>Splified example, has lifecycle method and much more</li>
+          <li>Update code to show custom title</li>
+          </ul>`}
+        >
+          <Heading margin="0 auto 2rem" fit textColor="primary">Then came React</Heading>
+          <ComponentPlayground
+            theme="dark"
+            code={`function App(props) {
+  return (
+    <div>
+      <h3>This is React!</h3>
+      <p>These slides are written in React</p>
+      <p>Check out Spectacle</p>
+    </div>
+  );
+}
+
+render(<App />, mountNode);`}
+          />
         </Slide>
       </Deck>
     );
