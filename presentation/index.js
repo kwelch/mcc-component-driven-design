@@ -37,6 +37,8 @@ const images = {
   twitterLogo: require("../assets/twitter-logo.svg"),
   githubLogo: require("../assets/GitHub-Mark-120px-plus.png"),
   cssModulesLogo: require("../assets/css-modules-logo-cropped.png"),
+  glamorousLogo: require("../assets/glamorous.png"),
+  scLogo: require("../assets/styled-components.png"),
   sponsors: require("../assets/sponsors.webp"),
   concerns: require("../assets/separation_of_concerns.jpg"),
 };
@@ -273,6 +275,7 @@ export default class Presentation extends React.Component {
           notes={`<ul>
           <li>here is what we will focus on</li>
           <li>Unique approached and adoption</li>
+          <li>React Specific, but I will mention non-react options</li>
           </ul>`}
         >
           <Heading textColor="primary" fit>css-in-js</Heading>
@@ -341,6 +344,35 @@ export default class Presentation extends React.Component {
             }}
           />
         </Slide>
+
+        <Slide
+          bgColor="tertiary"
+          transition={["zoom"]}
+          notes={`<ul>
+            <li>Why List</li>
+          <li>Objects allow for a lot: themeing, composition, and dynamic/calculated styles</li>
+          <li>Library it self if just shy of 8kb, and it preformant</li>
+          <li>Developer Centric teams may favor the object syntax, also easily ports from inline react styles</li>
+          </ul>
+          <ul>
+          <li>Why Not List</li>
+          <li>Small form factor is negated by (~30kb) of glamor, if size matter this edge if you are already using glamor</li>
+          <li>Younger library only 2mo, adoption is rising, but still has small community</li>
+          <li>Glamor can be used directly, if looking for non-react option</li>
+          </ul>`}
+        >
+          <Image src={images.glamorousLogo} width={200} />
+          <Layout>
+            <Fill>
+              <Text textColor="primary">Pros</Text>
+              <AppearList items={["Object Literals", "Small (~8kB)", "Small Dev-Heavy Teams"]} />
+            </Fill>
+            <Fill style={{ marginLeft: "1rem" }}>
+              <Text textColor="primary">Cons</Text>
+              <AppearList items={["Requires Glamor", "Young Library"]} />
+            </Fill>
+          </Layout>
+        </Slide>
         <Slide>
           <Heading lineHeight={1} textSize="32px" style={{ margin: "0 auto 2rem" }}>Styled Components</Heading>
           <ComponentPlayground
@@ -350,6 +382,30 @@ export default class Presentation extends React.Component {
               styled: require("styled-components").default,
             }}
           />
+        </Slide>
+
+        <Slide
+          transition={["zoom"]}
+          notes={`<ul>
+            <li>Why List</li>
+          <li></li>
+          </ul>
+          <ul>
+          <li>Why Not List</li>
+          <li></li>
+          </ul>`}
+        >
+          <Image src={images.scLogo} width={200} />
+          <Layout>
+            <Fill>
+              <Text textColor="primary">Pros</Text>
+              <AppearList items={["Hugely Abopted", "Uses CSS Syntax", "Above the Fold styling"]} />
+            </Fill>
+            <Fill style={{ marginLeft: "1rem" }}>
+              <Text textColor="primary">Cons</Text>
+              <AppearList items={["Fear of Template strings"]} />
+            </Fill>
+          </Layout>
         </Slide>
         <Slide><Image src={images.sponsors} /></Slide>
       </Deck>
