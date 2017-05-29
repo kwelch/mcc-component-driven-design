@@ -27,6 +27,8 @@ import preloader from "spectacle/lib/utils/preloader";
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
 
+import cssJsLibs from "./css-in-js-libs.json";
+
 // Require CSS
 require("normalize.css");
 require("spectacle/lib/themes/default/index.css");
@@ -35,6 +37,8 @@ const images = {
   twitterLogo: require("../assets/twitter-logo.svg"),
   githubLogo: require("../assets/GitHub-Mark-120px-plus.png"),
   cssModulesLogo: require("../assets/css-modules-logo.png"),
+  sponsors: require("../assets/sponsors.webp"),
+  concerns: require("../assets/separation_of_concerns.jpg"),
 };
 
 preloader(images);
@@ -55,50 +59,54 @@ const theme = createTheme(
 
 const SmallListItem = ({ style, ...rest }) => <ListItem {...rest} style={{ ...style, fontSize: "1.75rem" }} />;
 
+const IntroSlide = () => (
+  <div>
+    <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+      Introduction to<br />Component Based Styling
+    </Heading>
+    <Text margin="5rem 0 0" textColor="tertiary" size={3} bold>
+      Kyle Welch
+    </Text>
+    <Text margin=".5rem 0 0" textColor="secondary" size={0.75} italic>
+      Sr. Software Development Engineer @ NFIB
+    </Text>
+    <Layout style={{ marginTop: 100, justifyContent: "space-between" }}>
+      <Fill>
+        <Text textColor="tertiary" style={{ textAlign: "left" }}>
+          <Image src={images.twitterLogo} style={{ height: 25, margin: "0 10px 0" }} />
+          @kylewelch
+        </Text>
+      </Fill>
+      <Fill>
+        <Text style={{ textAlign: "right" }}>
+          <Image src={images.githubLogo} style={{ height: 30, margin: "0 10px 0" }} />
+          /kwelch
+        </Text>
+      </Fill>
+    </Layout>
+  </div>
+);
+
+const AppearList = ({ items, textColor, textSize, style }) => (
+  <List textColor={textColor} style={{ listStyleType: "none", ...style }}>
+    {items.map((val, i) => <Appear key={i}><ListItem style={{ fontSize: textSize }}>- {val}</ListItem></Appear>)}
+  </List>
+);
+
+const ArrayList = ({ items, textColor, textSize, style }) => (
+  <List textColor={textColor} style={{ listStyleType: "none", ...style }}>
+    {items.map((val, i) => <ListItem style={{ fontSize: textSize }} key={i}>- {val}</ListItem>)}
+  </List>
+);
+
 export default class Presentation extends React.Component {
   render() {
     return (
       <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme} progress="pacman">
         <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Introduction to<br />Component Based Styling
-          </Heading>
-          <Text margin="5rem 0 0" textColor="tertiary" size={3} bold>
-            Kyle Welch
-          </Text>
-          <Text margin=".5rem 0 0" textColor="secondary" size={0.75} italic>
-            Sr. Software Development Engineer @ NFIB
-          </Text>
-          <Layout style={{ marginTop: 100, justifyContent: "space-between" }}>
-            <Fill>
-              <Text textColor="tertiary" style={{ textAlign: "left" }}>
-                <Image src={images.twitterLogo} style={{ height: 25, margin: "0 10px 0" }} />
-                @kylewelch
-              </Text>
-            </Fill>
-            <Fill>
-              <Text style={{ textAlign: "right" }}>
-                <Image src={images.githubLogo} style={{ height: 30, margin: "0 10px 0" }} />
-                /kwelch
-              </Text>
-            </Fill>
-          </Layout>
+          <IntroSlide />
         </Slide>
-        <Slide
-          transition={["fade"]}
-          bgColor="quartenary"
-          notes={`<ul>
-            <li>There is no silver bullet, be open to any solution</li>
-            <li>I would love to talk to all of you. Find me, we will talk ;)</li>
-          </ul>`}
-        >
-          <Heading fit textColor="secondary">What this talk is NOT?</Heading>
-          <List style={{ listStyleType: "none" }}>
-            <Appear><ListItem>- Declaring a champion</ListItem></Appear>
-            <Appear><ListItem>- How to Implement</ListItem></Appear>
-            <Appear><ListItem>- Q&A</ListItem></Appear>
-          </List>
-        </Slide>
+        <Slide><Image src={images.sponsors} /></Slide>
         <Slide
           transition={["fade"]}
           bgColor="primary"
@@ -109,11 +117,25 @@ export default class Presentation extends React.Component {
         </ul>`}
         >
           <Heading fit textColor="tertiary">What is this talk?</Heading>
-          <List style={{ listStyleType: "none" }}>
-            <Appear><ListItem>- Overview of styling over time</ListItem></Appear>
-            <Appear><ListItem>- Comparision of new styling approaches</ListItem></Appear>
-            <Appear><ListItem>- Slightly baised toward React 😉</ListItem></Appear>
-          </List>
+          <AppearList
+            items={[
+              "Overview of styling over time",
+              "Comparision of new styling approaches",
+              "Slightly baised toward React 😉",
+            ]}
+          />
+        </Slide>
+        <Slide
+          transition={["fade"]}
+          bgColor="quartenary"
+          notes={`<ul>
+            <li>There is no silver bullet, be open to any solution</li>
+            <li>Intregration is very case based, so I recommend following the docs</li>
+            <li>I would love to talk to all of you. Find me, we will talk ;)</li>
+          </ul>`}
+        >
+          <Heading fit textColor="secondary">What this talk is NOT?</Heading>
+          <AppearList items={["Declaring a champion", "Project Integration", "Q&A"]} />
         </Slide>
         <Slide
           transition={["slide"]}
@@ -148,6 +170,7 @@ export default class Presentation extends React.Component {
             </Fill>
           </Layout>
         </Slide>
+
         <Slide
           transition={["zoom"]}
           bgColor="codePaneBg"
@@ -159,12 +182,13 @@ export default class Presentation extends React.Component {
           <li>Show inline styles - first look at css-in-js</li>
           </ul>`}
         >
-          <Heading margin="0 auto 2rem" fit textColor="primary">Then came React</Heading>
+          <Heading margin="0 auto 2rem" fit textColor="primary">Meet React</Heading>
           <ComponentPlayground
             theme="dark"
             code={`function App(props) {
   return (
     <div>
+      {props.title && <h1>{props.title}</h1>}
       <h3>This is React!</h3>
       <p>These slides are written in React</p>
       <p>Check out Spectacle</p>
@@ -185,11 +209,7 @@ render(<App />, mountNode);`}
           </ul>`}
         >
           <Image src={images.cssModulesLogo} width={200} />
-          <List textColor="secondary" style={{ listStyleType: "none" }}>
-            <Appear><ListItem>- Scoped class names</ListItem></Appear>
-            <Appear><ListItem>- Composes</ListItem></Appear>
-            <Appear><ListItem>- Requires Build Step</ListItem></Appear>
-          </List>
+          <AppearList textColor="tertiary" items={["Scoped class names", "Composes", "Requires Build Step"]} />
         </Slide>
         <Slide
           bgColor="tertiary"
@@ -200,57 +220,11 @@ render(<App />, mountNode);`}
           </ul>`}
         >
           <Heading textColor="primary" fit>css-in-js</Heading>
-          <List style={{ listStyleType: "none", display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
-            <SmallListItem>- aphrodite</SmallListItem>
-            <SmallListItem>- babel-plugin-css-in-js</SmallListItem>
-            <SmallListItem>- bloody-react-styled</SmallListItem>
-            <SmallListItem>- classy</SmallListItem>
-            <SmallListItem>- csjs</SmallListItem>
-            <SmallListItem>- css-constructor</SmallListItem>
-            <SmallListItem>- css-loader</SmallListItem>
-            <SmallListItem>- css-ns</SmallListItem>
-            <SmallListItem>- cssobj</SmallListItem>
-            <SmallListItem>- cssx-loader</SmallListItem>
-            <SmallListItem>- es-css-modules</SmallListItem>
-            <SmallListItem>- glamor</SmallListItem>
-            <SmallListItem>- glamorous</SmallListItem>
-            <SmallListItem>- hyperstyles</SmallListItem>
-            <SmallListItem>- j2c</SmallListItem>
-            <SmallListItem>- jsxstyle</SmallListItem>
-            <SmallListItem>- pre-style</SmallListItem>
-            <SmallListItem>- radium</SmallListItem>
-            <SmallListItem>- react-css-builder</SmallListItem>
-            <SmallListItem>- react-css-components</SmallListItem>
-            <SmallListItem>- react-css-modules</SmallListItem>
-            <SmallListItem>- react-cxs</SmallListItem>
-            <SmallListItem>- react-fela</SmallListItem>
-            <SmallListItem>- react-free-style</SmallListItem>
-            <SmallListItem>- react-inline-css</SmallListItem>
-            <SmallListItem>- react-inline-style</SmallListItem>
-            <SmallListItem>- react-inline</SmallListItem>
-            <SmallListItem>- react-jss</SmallListItem>
-            <SmallListItem>- react-look</SmallListItem>
-            <SmallListItem>- react-native-web</SmallListItem>
-            <SmallListItem>- react-statics-styles</SmallListItem>
-            <SmallListItem>- react-styl</SmallListItem>
-            <SmallListItem>- react-style</SmallListItem>
-            <SmallListItem>- react-styleable</SmallListItem>
-            <SmallListItem>- react-stylematic</SmallListItem>
-            <SmallListItem>- react-theme</SmallListItem>
-            <SmallListItem>- react-vstyle</SmallListItem>
-            <SmallListItem>- reactcss</SmallListItem>
-            <SmallListItem>- scope-styles</SmallListItem>
-            <SmallListItem>- smart-css</SmallListItem>
-            <SmallListItem>- stile + react-media-queries</SmallListItem>
-            <SmallListItem>- stilr</SmallListItem>
-            <SmallListItem>- style-it</SmallListItem>
-            <SmallListItem>- styled-components</SmallListItem>
-            <SmallListItem>- styled-jsx</SmallListItem>
-            <SmallListItem>- styletron-react</SmallListItem>
-            <SmallListItem>- styling</SmallListItem>
-            <SmallListItem>- typestyle</SmallListItem>
-            <SmallListItem>- uranium</SmallListItem>
-          </List>
+          <ArrayList
+            items={cssJsLibs}
+            textSize="1.75rem"
+            style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}
+          />
           <Text textColor="primary" textSize="1rem">Source: https://github.com/MicheleBertoli/css-in-js</Text>
         </Slide>
         <Slide
@@ -315,6 +289,8 @@ render(<App />, mountNode);`}
           </List>
           <Text textColor="primary" textSize="1rem">Source: https://github.com/MicheleBertoli/css-in-js</Text>
         </Slide>
+
+        <Slide><Image src={images.sponsors} /></Slide>
       </Deck>
     );
   }
