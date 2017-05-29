@@ -1,0 +1,16 @@
+import styles from './style.css';
+
+window.onload = () => {
+  const container = createContainer('Hello Music City Code!');
+  document.body.appendChild(container);
+};
+
+function createContainer(text, big) {
+  const element = document.createElement('div');
+  element.appendChild(document.createTextNode(text));
+  element.className = styles.container;
+  if (big) {
+    element.className += ` ${styles.big}`;
+  }
+  return element;
+}

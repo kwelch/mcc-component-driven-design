@@ -36,9 +36,19 @@ require("spectacle/lib/themes/default/index.css");
 const images = {
   twitterLogo: require("../assets/twitter-logo.svg"),
   githubLogo: require("../assets/GitHub-Mark-120px-plus.png"),
-  cssModulesLogo: require("../assets/css-modules-logo.png"),
+  cssModulesLogo: require("../assets/css-modules-logo-cropped.png"),
   sponsors: require("../assets/sponsors.webp"),
   concerns: require("../assets/separation_of_concerns.jpg"),
+};
+
+const examples = {
+  OGCss: require("raw-loader!../assets/old-school.css.example"),
+  BEM: require("raw-loader!../assets/bem.css.example"),
+  Sass: require("raw-loader!../assets/sass.example"),
+  cssModules: {
+    style: require("raw-loader!../assets/cssmodules/style.css.example"),
+    app: require("raw-loader!../assets/cssmodules/app.js.example"),
+  },
 };
 
 preloader(images);
@@ -151,26 +161,79 @@ export default class Presentation extends React.Component {
           <Layout>
             <Fill>
               <Appear>
-                <CodePane
-                  lang="css"
-                  source={require("raw-loader!../assets/old-school.css.example")}
-                  margin="20px auto"
-                />
+                <CodePane lang="css" source={examples.OGCss} margin="20px auto" />
               </Appear>
             </Fill>
             <Fill>
               <Appear>
-                <CodePane lang="css" source={require("raw-loader!../assets/bem.css.example")} margin="20px auto" />
+                <CodePane lang="css" source={examples.BEM} margin="20px auto" />
               </Appear>
             </Fill>
             <Fill>
               <Appear>
-                <CodePane lang="css" source={require("raw-loader!../assets/sass.example")} margin="20px auto" />
+                <CodePane lang="css" source={examples.Sass} margin="20px auto" />
               </Appear>
             </Fill>
           </Layout>
         </Slide>
 
+        <Slide transition={["spin"]} bgColor="codePaneBg">
+          <Image src={images.cssModulesLogo} width={200} />
+          <Layout>
+            <Fill>
+              <div className="filePane">
+                <Text textColor="primary">style.css</Text>
+                <CodePane lang="css" source={examples.cssModules.style} />
+              </div>
+            </Fill>
+            <Fill>
+              <div className="filePane">
+                <Text textColor="primary">app.js</Text>
+                <CodePane lang="js" source={examples.cssModules.app} />
+              </div>
+            </Fill>
+          </Layout>
+          <Link textColor="primary" href="https://www.webpackbin.com/bins/-KlJuBapiJHedN20gb5K" target="_blank">
+            Webpack Bin
+          </Link>
+        </Slide>
+        <Slide
+          transition={["zoom"]}
+          notes={`<ul>
+            <li>Why List</li>
+          <li>File Scoped, no more global scope or BEM practices</li>
+          <li>Inheritance</li>
+          <li>Designers are unaffected, stay in css, only change in on devs part</li>
+          </ul>
+          <ul>
+          <li>Why Not List</li>
+          <li>Requires a build step with webpack or browserify</li>
+          <li>due to build step, when distibution users must also comply<li>
+          <li>Centralizing concerns at the functional level</li>
+          </ul>`}
+        >
+          <Image src={images.cssModulesLogo} width={200} />
+          <Layout>
+            <Fill>
+              <Text textColor="tertiary">Pros</Text>
+              <AppearList items={["Scoped classes", "Composes", "Design Teams"]} />
+            </Fill>
+            <Fill style={{ marginLeft: "1rem" }}>
+              <Text textColor="tertiary">Cons</Text>
+              <AppearList items={["Requires Build Step", "Packaging", "Multiple Files"]} />
+            </Fill>
+          </Layout>
+        </Slide>
+        <Slide>
+          <Image src={images.concerns} style={{ width: "75vw" }} />
+          <Link
+            textColor="secondary"
+            href="https://twitter.com/MicheleBertoli/status/868078729662279680"
+            target="blank"
+          >
+            Source: Cristiano Rastelli (@areaweb)
+          </Link>
+        </Slide>
         <Slide
           transition={["zoom"]}
           bgColor="codePaneBg"
@@ -182,7 +245,6 @@ export default class Presentation extends React.Component {
           <li>Show inline styles - first look at css-in-js</li>
           </ul>`}
         >
-          <Heading margin="0 auto 2rem" fit textColor="primary">Meet React</Heading>
           <ComponentPlayground
             theme="dark"
             code={`function App(props) {
@@ -190,26 +252,14 @@ export default class Presentation extends React.Component {
     <div>
       {props.title && <h1>{props.title}</h1>}
       <h3>This is React!</h3>
-      <p>These slides are written in React</p>
-      <p>Check out Spectacle</p>
+      <p>These slides are written in React.</p>
+      <i>Check out Spectacle!</i>
     </div>
   );
 }
 
 render(<App />, mountNode);`}
           />
-        </Slide>
-        <Slide
-          transition={["slide"]}
-          notes={`<ul>
-          <li>File Scoped, no more global scope or BEM practices</li>
-          <li>Inheritance</li>
-          <li>Requires a build step with webpack or browserify</li>
-          <li>Object notation allows for easy looks ups</li>
-          </ul>`}
-        >
-          <Image src={images.cssModulesLogo} width={200} />
-          <AppearList textColor="tertiary" items={["Scoped class names", "Composes", "Requires Build Step"]} />
         </Slide>
         <Slide
           bgColor="tertiary"
