@@ -42,13 +42,16 @@ const images = {
 };
 
 const examples = {
-  OGCss: require("raw-loader!../assets/old-school.css.example"),
-  BEM: require("raw-loader!../assets/bem.css.example"),
-  Sass: require("raw-loader!../assets/sass.example"),
+  OGCss: require("raw-loader!../examples/old-school.css.example"),
+  BEM: require("raw-loader!../examples/bem.css.example"),
+  Sass: require("raw-loader!../examples/sass.example"),
   cssModules: {
-    style: require("raw-loader!../assets/cssmodules/style.css.example"),
-    app: require("raw-loader!../assets/cssmodules/app.js.example"),
+    style: require("raw-loader!../examples/cssmodules/style.css.example"),
+    app: require("raw-loader!../examples/cssmodules/app.js.example"),
   },
+  react: require("raw-loader!../examples/react.js.example"),
+  glamorous: require("raw-loader!../examples/glamorous.js.example"),
+  styleComponents: require("raw-loader!../examples/styled-components.js.example"),
 };
 
 preloader(images);
@@ -245,21 +248,8 @@ export default class Presentation extends React.Component {
           <li>Show inline styles - first look at css-in-js</li>
           </ul>`}
         >
-          <ComponentPlayground
-            theme="dark"
-            code={`function App(props) {
-  return (
-    <div>
-      {props.title && <h1>{props.title}</h1>}
-      <h3>This is React!</h3>
-      <p>These slides are written in React.</p>
-      <i>Check out Spectacle!</i>
-    </div>
-  );
-}
-
-render(<App />, mountNode);`}
-          />
+          <Heading lineHeight={1} textSize="32px" style={{ margin: "0 auto 2rem" }}>React</Heading>
+          <ComponentPlayground theme="dark" previewBackgroundColor="#cdcdcd" code={examples.react} />
         </Slide>
         <Slide
           bgColor="tertiary"
@@ -340,6 +330,27 @@ render(<App />, mountNode);`}
           <Text textColor="primary" textSize="1rem">Source: https://github.com/MicheleBertoli/css-in-js</Text>
         </Slide>
 
+        <Slide>
+          <Heading lineHeight={1} textSize="32px" style={{ margin: "0 auto 2rem" }}>Glamorous</Heading>
+          <ComponentPlayground
+            code={examples.glamorous}
+            previewBackgroundColor="#cdcdcd"
+            scope={{
+              glamor: require("glamor").default,
+              glamorous: require("glamorous").default,
+            }}
+          />
+        </Slide>
+        <Slide>
+          <Heading lineHeight={1} textSize="32px" style={{ margin: "0 auto 2rem" }}>Styled Components</Heading>
+          <ComponentPlayground
+            code={examples.styleComponents}
+            previewBackgroundColor="#cdcdcd"
+            scope={{
+              styled: require("styled-components").default,
+            }}
+          />
+        </Slide>
         <Slide><Image src={images.sponsors} /></Slide>
       </Deck>
     );

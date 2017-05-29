@@ -1,0 +1,24 @@
+const Container = glamorous.div(
+  {
+    fontFamily: "'Press Start 2P', cursive",
+    padding: '2rem',
+    color: 'white',
+    border: '2px solid white',
+    boxShadow: '5px 5px 0px black',
+  },
+  ({ backgroundColor, big, width }) => ({
+    fontSize: big ? '1.75rem' : '1.2rem',
+    backgroundColor: backgroundColor || '#f2621c',
+    width
+  })
+);
+
+function App() {
+  return (<div>
+  <Container>
+  Hello Music City Code!
+  </Container>
+</div>);
+}
+
+render(<App />, mountNode);

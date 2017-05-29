@@ -1,0 +1,20 @@
+const Container = styled.div`
+  font-family: 'Press Start 2P', cursive;
+  padding: 2rem;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 5px 5px 0 black;
+  font-size: ${props => props.big ? '1.75rem' : '1.2rem'};
+  background-color: ${props => props.backgroundColor || '#f2621c'};
+  width: ${props => props.width};
+`;
+
+function App() {
+  return (<div>
+  <Container>
+  Hello Music City Code!
+  </Container>
+</div>);
+}
+
+render(<App />, mountNode);

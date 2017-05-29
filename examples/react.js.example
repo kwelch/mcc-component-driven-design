@@ -1,0 +1,12 @@
+function App(props) {
+  return (
+    <div>
+      {props.title && <h1>{props.title}</h1>}
+      <h3>This is React!</h3>
+      <p>These slides are written in React.</p>
+      <i>Check out Spectacle!</i>
+    </div>
+  );
+}
+
+render(<App />, mountNode);
