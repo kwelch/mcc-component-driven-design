@@ -230,7 +230,7 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
         <Slide>
-          <Image src={images.concerns} style={{ width: "75vw" }} />
+          <div><Image src={images.concerns} style={{ width: "55vw" }} /></div>
           <Link
             textColor="secondary"
             href="https://twitter.com/MicheleBertoli/status/868078729662279680"
@@ -250,7 +250,7 @@ export default class Presentation extends React.Component {
           <li>Show inline styles - first look at css-in-js</li>
           </ul>`}
         >
-          <Heading lineHeight={1} textSize="32px" style={{ margin: "0 auto 2rem" }}>React</Heading>
+          <Heading lineHeight={1.25} textSize="52px" style={{ margin: "0 auto 2rem" }}>React</Heading>
           <ComponentPlayground theme="dark" previewBackgroundColor="#cdcdcd" code={examples.react} />
         </Slide>
         <Slide
@@ -261,13 +261,42 @@ export default class Presentation extends React.Component {
           <li>Notice all the instances of React</li>
           </ul>`}
         >
-          <Heading textColor="primary" fit>css-in-js</Heading>
+          <Heading lineHeight={1.25} textSize="52px" textColor="primary">css-in-js</Heading>
           <ArrayList
             items={cssJsLibs}
             textSize="1.75rem"
             style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}
           />
-          <Text textColor="primary" textSize="1rem">Source: https://github.com/MicheleBertoli/css-in-js</Text>
+          <Link href="https://github.com/MicheleBertoli/css-in-js" target="_blank" textColor="primary" textSize="1rem">
+            Source: https://github.com/MicheleBertoli/css-in-js
+          </Link>
+        </Slide>
+        <Slide
+          bgColor="quartenary"
+          transition={["zoom"]}
+          notes={`<ul>
+            <li>Why List</li>
+          <li>Lot of options, different support levels but css-in-js has you covered</li>
+          <li>Code centralized by feature not tech</li>
+          <li>Not great for design teams, but works well for devs</li>
+          </ul>
+          <ul>
+          <li>Why Not List</li>
+          <li>Lint is the works but not ready</li>
+          <li>Extracting to possible, but outside SSR</li>
+          </ul>`}
+        >
+          <Heading lineHeight={1.25} textSize="52px" textColor="primary">css-in-js</Heading>
+          <Layout>
+            <Fill>
+              <Text textColor="tertiary">Pros</Text>
+              <AppearList items={["CSS Feature Support", "Centralized Component Code", "Developer Friendly"]} />
+            </Fill>
+            <Fill style={{ marginLeft: "1rem" }}>
+              <Text textColor="tertiary">Cons</Text>
+              <AppearList items={["No Style Linting", "CSS/JS Cached Together"]} />
+            </Fill>
+          </Layout>
         </Slide>
         <Slide
           bgColor="tertiary"
@@ -278,7 +307,7 @@ export default class Presentation extends React.Component {
           <li>React Specific, but I will mention non-react options</li>
           </ul>`}
         >
-          <Heading textColor="primary" fit>css-in-js</Heading>
+          <Heading lineHeight={1.25} textSize="52px" textColor="primary">css-in-js</Heading>
           <List style={{ listStyleType: "none", display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
             <SmallListItem>- aphrodite</SmallListItem>
             <SmallListItem>- babel-plugin-css-in-js</SmallListItem>
@@ -334,7 +363,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading lineHeight={1} textSize="32px" style={{ margin: "0 auto 2rem" }}>Glamorous</Heading>
+          <Heading lineHeight={1.25} textSize="52px" style={{ margin: "0 auto 2rem" }}>Glamorous</Heading>
           <ComponentPlayground
             code={examples.glamorous}
             previewBackgroundColor="#cdcdcd"
@@ -374,7 +403,7 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
         <Slide>
-          <Heading lineHeight={1} textSize="32px" style={{ margin: "0 auto 2rem" }}>Styled Components</Heading>
+          <Heading lineHeight={1.25} textSize="52px" style={{ margin: "0 auto 2rem" }}>Styled Components</Heading>
           <ComponentPlayground
             code={examples.styleComponents}
             previewBackgroundColor="#cdcdcd"
@@ -388,22 +417,25 @@ export default class Presentation extends React.Component {
           transition={["zoom"]}
           notes={`<ul>
             <li>Why List</li>
-          <li></li>
+          <li>Huge community, 9mo, v2 just released</li>
+          <li>Write CSS directly in js</li>
+          <li>Great Feature of v2, critical css</li>
           </ul>
           <ul>
           <li>Why Not List</li>
-          <li></li>
+          <li>Much like JSX this adds just another complex looking syntax</li>
+          <li>RTL not support natively, caused introduction of glamorous</li>
           </ul>`}
         >
           <Image src={images.scLogo} width={200} />
           <Layout>
             <Fill>
-              <Text textColor="primary">Pros</Text>
-              <AppearList items={["Hugely Abopted", "Uses CSS Syntax", "Above the Fold styling"]} />
+              <Text textColor="tertiary">Pros</Text>
+              <AppearList items={["Largely Adopted", "Uses CSS Syntax", "Above the Fold styling"]} />
             </Fill>
             <Fill style={{ marginLeft: "1rem" }}>
-              <Text textColor="primary">Cons</Text>
-              <AppearList items={["Fear of Template strings"]} />
+              <Text textColor="tertiary">Cons</Text>
+              <AppearList items={["Fear of Template Literals", "RTL Support"]} />
             </Fill>
           </Layout>
         </Slide>
