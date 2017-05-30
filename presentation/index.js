@@ -19,6 +19,12 @@ import {
   Fill,
   Link,
   ComponentPlayground,
+  Table,
+  TableHeader,
+  TableHeaderItem,
+  TableBody,
+  TableItem,
+  TableRow,
 } from "spectacle";
 
 // Import image preloader util
@@ -439,7 +445,79 @@ export default class Presentation extends React.Component {
             </Fill>
           </Layout>
         </Slide>
+        <Slide>
+          <Heading>Recap</Heading>
+          <Table textSize={10}>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderItem />
+                <TableHeaderItem>Scoping</TableHeaderItem>
+                <TableHeaderItem>Syntax</TableHeaderItem>
+                <TableHeaderItem>Best Fit</TableHeaderItem>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHeaderItem textAlign="left">CSS</TableHeaderItem>
+                <TableItem>Global</TableItem>
+                <TableItem>CSS</TableItem>
+                <TableItem>Anyone</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableHeaderItem textAlign="left">CSS Modules</TableHeaderItem>
+                <TableItem>File</TableItem>
+                <TableItem>CSS</TableItem>
+                <TableItem>Designers</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableHeaderItem textAlign="left">Glamorous</TableHeaderItem>
+                <TableItem>Component</TableItem>
+                <TableItem>JS Objects</TableItem>
+                <TableItem>Technical</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableHeaderItem textAlign="left">Styled Components</TableHeaderItem>
+                <TableItem>Component</TableItem>
+                <TableItem>CSS</TableItem>
+                <TableItem>Technical</TableItem>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </Slide>
+        <Slide>
+          <Heading>Helpful Tools</Heading>
+          <AppearList items={["PostCSS (Autoprefixer)", "classnames", "polished", "webfontloader", "jest"]} />
+        </Slide>
+        <Slide>
+          <Heading>Resources</Heading>
+          <AppearList items={["PostCSS (Autoprefixer)", "classnames", "polished", "webfontloader", "jest"]} />
+        </Slide>
         <Slide><Image src={images.sponsors} /></Slide>
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+            Thank You!
+          </Heading>
+          <Text margin="5rem 0 0" textColor="tertiary" size={3} bold>
+            Kyle Welch
+          </Text>
+          <Text margin=".5rem 0 0" textColor="secondary" size={0.75} italic>
+            Sr. Software Development Engineer @ NFIB
+          </Text>
+          <Layout style={{ marginTop: 100, justifyContent: "space-between" }}>
+            <Fill>
+              <Text textColor="tertiary" style={{ textAlign: "left" }}>
+                <Image src={images.twitterLogo} style={{ height: 25, margin: "0 10px 0" }} />
+                @kylewelch
+              </Text>
+            </Fill>
+            <Fill>
+              <Text style={{ textAlign: "right" }}>
+                <Image src={images.githubLogo} style={{ height: 30, margin: "0 10px 0" }} />
+                /kwelch
+              </Text>
+            </Fill>
+          </Layout>
+        </Slide>
       </Deck>
     );
   }
