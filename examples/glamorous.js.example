@@ -4,7 +4,10 @@ const Container = glamorous.div(
     padding: '2rem',
     color: 'white',
     border: '2px solid white',
-    boxShadow: '5px 5px 0px black',
+    boxShadow: '5px 5px 0px  black',
+    ':hover': {
+      backgroundColor: '#334f99',
+    }
   },
   ({ backgroundColor, big, width }) => ({
     fontSize: big ? '1.75rem' : '1.2rem',

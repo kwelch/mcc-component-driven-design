@@ -116,7 +116,9 @@ const AppearList = ({ items, textColor, textSize, style }) => (
 
 const ArrayList = ({ items, textColor, textSize, style }) => (
   <List textColor={textColor} style={{ listStyleType: "none", ...style }}>
-    {items.map((val, i) => <ListItem style={{ fontSize: textSize }} key={i}>- {val}</ListItem>)}
+    {items.map(
+      (val, i) => (typeof val === "string" ? <ListItem style={{ fontSize: textSize }} key={i}>- {val}</ListItem> : val)
+    )}
   </List>
 );
 
@@ -188,7 +190,16 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide transition={["spin"]} bgColor="codePaneBg">
+        <Slide
+          transition={["spin"]}
+          bgColor="codePaneBg"
+          notes={`<ul>
+          <li>allow you to turn your stylesheet into an object of class names</li>
+          <li>styleshet can be css, less, sass</li>
+          <li>Processed with webpack or browserify, generates scoped class names</li>
+          <li>Explicit dependencies</li>
+          </ul>`}
+        >
           <Image src={images.cssModulesLogo} width={200} />
           <Layout>
             <Fill>
@@ -219,18 +230,19 @@ export default class Presentation extends React.Component {
           <ul>
           <li>Why Not List</li>
           <li>Requires a build step with webpack or browserify</li>
-          <li>due to build step, when distibution users must also comply<li>
+          <li>due to build step, when distibution users must also comply</li>
           <li>Centralizing concerns at the functional level</li>
           </ul>`}
         >
           <Image src={images.cssModulesLogo} width={200} />
+          <Text margin="0 auto 2rem" textColor="tertiary">Great for: Teams with Designers</Text>
           <Layout>
             <Fill>
-              <Text textColor="tertiary">Pros</Text>
-              <AppearList items={["Scoped classes", "Composes", "Design Teams"]} />
+              <Appear><Text textColor="tertiary">Pros</Text></Appear>
+              <AppearList items={["Scoped classes", "Composition", "Explicit dependencies"]} />
             </Fill>
             <Fill style={{ marginLeft: "1rem" }}>
-              <Text textColor="tertiary">Cons</Text>
+              <Appear><Text textColor="tertiary">Cons</Text></Appear>
               <AppearList items={["Requires Build Step", "Packaging", "Multiple Files"]} />
             </Fill>
           </Layout>
@@ -282,9 +294,10 @@ export default class Presentation extends React.Component {
           transition={["zoom"]}
           notes={`<ul>
             <li>Why List</li>
+          <li>Not great for design teams, but works well for devs</li>
           <li>Lot of options, different support levels but css-in-js has you covered</li>
           <li>Code centralized by feature not tech</li>
-          <li>Not great for design teams, but works well for devs</li>
+          <li>React Native Styling Options, re-enforces the learn once write anywhere</li>
           </ul>
           <ul>
           <li>Why Not List</li>
@@ -293,13 +306,14 @@ export default class Presentation extends React.Component {
           </ul>`}
         >
           <Heading lineHeight={1.25} textSize="52px" textColor="primary">css-in-js</Heading>
+          <Text margin="0 auto 2rem" textColor="tertiary">Great for: Dev Teams</Text>
           <Layout>
             <Fill>
-              <Text textColor="tertiary">Pros</Text>
-              <AppearList items={["CSS Feature Support", "Centralized Component Code", "Developer Friendly"]} />
+              <Appear><Text textColor="tertiary">Pros</Text></Appear>
+              <AppearList items={["CSS Feature Support", "Centralized Component Code", "Native Support"]} />
             </Fill>
             <Fill style={{ marginLeft: "1rem" }}>
-              <Text textColor="tertiary">Cons</Text>
+              <Appear><Text textColor="tertiary">Cons</Text></Appear>
               <AppearList items={["No Style Linting", "CSS/JS Cached Together"]} />
             </Fill>
           </Layout>
@@ -314,57 +328,16 @@ export default class Presentation extends React.Component {
           </ul>`}
         >
           <Heading lineHeight={1.25} textSize="52px" textColor="primary">css-in-js</Heading>
-          <List style={{ listStyleType: "none", display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
-            <SmallListItem>- aphrodite</SmallListItem>
-            <SmallListItem>- babel-plugin-css-in-js</SmallListItem>
-            <SmallListItem>- bloody-react-styled</SmallListItem>
-            <SmallListItem>- classy</SmallListItem>
-            <SmallListItem>- csjs</SmallListItem>
-            <SmallListItem>- css-constructor</SmallListItem>
-            <SmallListItem>- css-loader</SmallListItem>
-            <SmallListItem>- css-ns</SmallListItem>
-            <SmallListItem>- cssobj</SmallListItem>
-            <SmallListItem>- cssx-loader</SmallListItem>
-            <SmallListItem>- es-css-modules</SmallListItem>
-            <SmallListItem>- glamor</SmallListItem>
-            <SmallListItem textColor="primary">- glamorous</SmallListItem>
-            <SmallListItem>- hyperstyles</SmallListItem>
-            <SmallListItem>- j2c</SmallListItem>
-            <SmallListItem>- jsxstyle</SmallListItem>
-            <SmallListItem>- pre-style</SmallListItem>
-            <SmallListItem>- radium</SmallListItem>
-            <SmallListItem>- react-css-builder</SmallListItem>
-            <SmallListItem>- react-css-components</SmallListItem>
-            <SmallListItem>- react-css-modules</SmallListItem>
-            <SmallListItem>- react-cxs</SmallListItem>
-            <SmallListItem>- react-fela</SmallListItem>
-            <SmallListItem>- react-free-style</SmallListItem>
-            <SmallListItem>- react-inline-css</SmallListItem>
-            <SmallListItem>- react-inline-style</SmallListItem>
-            <SmallListItem>- react-inline</SmallListItem>
-            <SmallListItem>- react-jss</SmallListItem>
-            <SmallListItem>- react-look</SmallListItem>
-            <SmallListItem>- react-native-web</SmallListItem>
-            <SmallListItem>- react-statics-styles</SmallListItem>
-            <SmallListItem>- react-styl</SmallListItem>
-            <SmallListItem>- react-style</SmallListItem>
-            <SmallListItem>- react-styleable</SmallListItem>
-            <SmallListItem>- react-stylematic</SmallListItem>
-            <SmallListItem>- react-theme</SmallListItem>
-            <SmallListItem>- react-vstyle</SmallListItem>
-            <SmallListItem>- reactcss</SmallListItem>
-            <SmallListItem>- scope-styles</SmallListItem>
-            <SmallListItem>- smart-css</SmallListItem>
-            <SmallListItem>- stile + react-media-queries</SmallListItem>
-            <SmallListItem>- stilr</SmallListItem>
-            <SmallListItem>- style-it</SmallListItem>
-            <SmallListItem textColor="primary">- styled-components</SmallListItem>
-            <SmallListItem>- styled-jsx</SmallListItem>
-            <SmallListItem>- styletron-react</SmallListItem>
-            <SmallListItem>- styling</SmallListItem>
-            <SmallListItem>- typestyle</SmallListItem>
-            <SmallListItem>- uranium</SmallListItem>
-          </List>
+
+          <ArrayList
+            items={cssJsLibs.map((v, i) => (
+              <SmallListItem key={i} textColor={["glamorous", "styled-components"].includes(v) && "primary"}>
+                - {v}
+              </SmallListItem>
+            ))}
+            textSize="1.75rem"
+            style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}
+          />
           <Text textColor="primary" textSize="1rem">Source: https://github.com/MicheleBertoli/css-in-js</Text>
         </Slide>
 
@@ -397,16 +370,24 @@ export default class Presentation extends React.Component {
           </ul>`}
         >
           <Image src={images.glamorousLogo} width={200} />
+          <Text margin="0 auto 2rem" textColor="primary">
+            Great when: Prefer Object Literals & Internationalization
+          </Text>
           <Layout>
             <Fill>
-              <Text textColor="primary">Pros</Text>
-              <AppearList items={["Object Literals", "Small (~8kB)", "Small Dev-Heavy Teams"]} />
+              <Appear><Text textColor="primary">Pros</Text></Appear>
+              <AppearList items={["Object Literals", "Small (~8kB)*"]} />
             </Fill>
             <Fill style={{ marginLeft: "1rem" }}>
-              <Text textColor="primary">Cons</Text>
+              <Appear><Text textColor="primary">Cons</Text></Appear>
               <AppearList items={["Requires Glamor", "Young Library"]} />
             </Fill>
           </Layout>
+          <Appear>
+            <Text margin="0 auto 2rem" textColor="primary">
+              Non-React Option: Glamor
+            </Text>
+          </Appear>
         </Slide>
         <Slide>
           <Heading lineHeight={1.25} textSize="52px" style={{ margin: "0 auto 2rem" }}>Styled Components</Heading>
@@ -434,16 +415,24 @@ export default class Presentation extends React.Component {
           </ul>`}
         >
           <Image src={images.scLogo} width={200} />
+          <Text margin="0 auto 2rem" textColor="tertiary">
+            Great when: Like CSS Syntax
+          </Text>
           <Layout>
             <Fill>
-              <Text textColor="tertiary">Pros</Text>
-              <AppearList items={["Largely Adopted", "Uses CSS Syntax", "Above the Fold styling"]} />
+              <Appear><Text textColor="tertiary">Pros</Text></Appear>
+              <AppearList items={["Largely Adopted", "Uses CSS Syntax"]} />
             </Fill>
             <Fill style={{ marginLeft: "1rem" }}>
-              <Text textColor="tertiary">Cons</Text>
+              <Appear><Text textColor="tertiary">Cons</Text></Appear>
               <AppearList items={["Fear of Template Literals", "RTL Support"]} />
             </Fill>
           </Layout>
+          <Appear>
+            <Text margin="0 auto 2rem" textColor="tertiary">
+              Non-React Option: styled-elements
+            </Text>
+          </Appear>
         </Slide>
         <Slide>
           <Heading>Recap</Heading>
@@ -459,37 +448,34 @@ export default class Presentation extends React.Component {
             <TableBody>
               <TableRow>
                 <TableHeaderItem textAlign="left">CSS</TableHeaderItem>
-                <TableItem>Global</TableItem>
+                <TableItem>🌎</TableItem>
                 <TableItem>CSS</TableItem>
-                <TableItem>Anyone</TableItem>
+                <TableItem>👨‍👩‍👧‍👦</TableItem>
               </TableRow>
               <TableRow>
                 <TableHeaderItem textAlign="left">CSS Modules</TableHeaderItem>
-                <TableItem>File</TableItem>
+                <TableItem>📄</TableItem>
                 <TableItem>CSS</TableItem>
-                <TableItem>Designers</TableItem>
+                <TableItem>🎨</TableItem>
               </TableRow>
               <TableRow>
                 <TableHeaderItem textAlign="left">Glamorous</TableHeaderItem>
-                <TableItem>Component</TableItem>
-                <TableItem>JS Objects</TableItem>
-                <TableItem>Technical</TableItem>
+                <TableItem>🎯</TableItem>
+                <TableItem>Objects</TableItem>
+                <TableItem> 💻 </TableItem>
               </TableRow>
               <TableRow>
                 <TableHeaderItem textAlign="left">Styled Components</TableHeaderItem>
-                <TableItem>Component</TableItem>
+                <TableItem>🎯</TableItem>
                 <TableItem>CSS</TableItem>
-                <TableItem>Technical</TableItem>
+                <TableItem> 💻 </TableItem>
               </TableRow>
             </TableBody>
           </Table>
+          <Appear><Heading textColor="tertiary">You can use them together!</Heading></Appear>
         </Slide>
         <Slide>
           <Heading>Helpful Tools</Heading>
-          <AppearList items={["PostCSS (Autoprefixer)", "classnames", "polished", "webfontloader", "jest"]} />
-        </Slide>
-        <Slide>
-          <Heading>Resources</Heading>
           <AppearList items={["PostCSS (Autoprefixer)", "classnames", "polished", "webfontloader", "jest"]} />
         </Slide>
         <Slide><Image src={images.sponsors} /></Slide>
