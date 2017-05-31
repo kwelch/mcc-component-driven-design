@@ -371,7 +371,7 @@ export default class Presentation extends React.Component {
         >
           <Image src={images.glamorousLogo} width={200} />
           <Text margin="0 auto 2rem" textColor="primary">
-            Great when: Prefer Object Literals & Internationalization
+            Great when: Internationalization & Object Literals
           </Text>
           <Layout>
             <Fill>
@@ -472,11 +472,19 @@ export default class Presentation extends React.Component {
               </TableRow>
             </TableBody>
           </Table>
-          <Appear><Heading textColor="tertiary">You can use them together!</Heading></Appear>
+          <Appear><Heading textSize={48} textColor="tertiary">You can use them together!</Heading></Appear>
         </Slide>
         <Slide>
           <Heading>Helpful Tools</Heading>
-          <AppearList items={["PostCSS (Autoprefixer)", "classnames", "polished", "webfontloader", "jest"]} />
+          <AppearList
+            items={[
+              <Link textColor="secondary" href="http://postcss.org/">PostCSS (Autoprefixer)</Link>,
+              <Link textColor="secondary" href="https://github.com/JedWatson/classnames">classnames</Link>,
+              <Link textColor="secondary" href="https://github.com/styled-components/polished">polished</Link>,
+              <Link textColor="secondary" href="https://github.com/typekit/webfontloader">webfontloader</Link>,
+              <Link textColor="secondary" href="https://github.com/facebook/jest">jest</Link>,
+            ]}
+          />
         </Slide>
         <Slide><Image src={images.sponsors} /></Slide>
         <Slide transition={["zoom"]} bgColor="primary">
