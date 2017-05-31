@@ -91,6 +91,9 @@ const IntroSlide = () => (
     <Text margin=".5rem 0 0" textColor="secondary" size={0.75} italic>
       Sr. Software Development Engineer @ NFIB
     </Text>
+    <Link href="http://slides.krwelch.com/component-styling" margin=".5rem 0 0" textColor="tertiary" size={0.75} italic>
+      http://slides.krwelch.com/component-styling
+    </Link>
     <Layout style={{ marginTop: 100, justifyContent: "space-between" }}>
       <Fill>
         <Text textColor="tertiary" style={{ textAlign: "left" }}>
@@ -494,9 +497,15 @@ export default class Presentation extends React.Component {
           <Text margin="5rem 0 0" textColor="tertiary" size={3} bold>
             Kyle Welch
           </Text>
-          <Text margin=".5rem 0 0" textColor="secondary" size={0.75} italic>
-            Sr. Software Development Engineer @ NFIB
-          </Text>
+          <Link
+            href="http://slides.krwelch.com/component-styling"
+            margin=".5rem 0 0"
+            textColor="tertiary"
+            size={0.75}
+            italic
+          >
+            http://slides.krwelch.com/component-styling
+          </Link>
           <Layout style={{ marginTop: 100, justifyContent: "space-between" }}>
             <Fill>
               <Text textColor="tertiary" style={{ textAlign: "left" }}>
