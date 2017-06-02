@@ -1,11 +1,6 @@
-import styles from './style.css';
+const styles = require('./style.css');
 
-window.onload = () => {
-  const container = createContainer('Hello Music City Code!');
-  document.body.appendChild(container);
-};
-
-function createContainer(text, big) {
+module.exports = function Container(text, big) {
   const element = document.createElement('div');
   element.appendChild(document.createTextNode(text));
   element.className = styles.container;

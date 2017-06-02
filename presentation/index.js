@@ -47,6 +47,7 @@ const images = {
   scLogo: require("../assets/styled-components.png"),
   sponsors: require("../assets/sponsors.webp"),
   concerns: require("../assets/separation_of_concerns.jpg"),
+  styledForm: require("../assets/css-styled-form.png"),
 };
 
 const examples = {
@@ -59,6 +60,7 @@ const examples = {
   },
   react: require("raw-loader!../examples/react.js.example"),
   glamorous: require("raw-loader!../examples/glamorous.js.example"),
+  container: require("raw-loader!../examples/container.js.example"),
   styleComponents: require("raw-loader!../examples/styled-components.js.example"),
 };
 
@@ -88,22 +90,28 @@ const IntroSlide = () => (
     <Text margin="5rem 0 0" textColor="tertiary" size={3} bold>
       Kyle Welch
     </Text>
-    <Text margin=".5rem 0 0" textColor="secondary" size={0.75} italic>
-      Sr. Software Development Engineer @ NFIB
+    <Text margin=".5rem 0 2rem" textColor="secondary" size={0.75} italic>
+      @NFIB
     </Text>
-    <Link href="http://slides.krwelch.com/component-styling" margin=".5rem 0 0" textColor="tertiary" size={0.75} italic>
-      http://slides.krwelch.com/component-styling
+    <Link href="http://slides.krwelch.com/component-styling/" textColor="tertiary" size={0.75} italic>
+      http://slides.krwelch.com/component-styling/
     </Link>
-    <Layout style={{ marginTop: 100, justifyContent: "space-between" }}>
+    <Layout style={{ marginTop: "4rem", justifyContent: "space-between", alignItems: "center" }}>
       <Fill>
-        <Text textColor="tertiary" style={{ textAlign: "left" }}>
-          <Image src={images.twitterLogo} style={{ height: 25, margin: "0 10px 0" }} />
+        <Text textColor="tertiary" style={{ textAlign: "center" }}>
+          <Image src={images.twitterLogo} style={{ height: 25, margin: "0 10px 0" }} /><br />
           @kylewelch
         </Text>
       </Fill>
+      <Fill style={{ width: 180 }}>
+        <Image
+          width={180}
+          src="https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=http%3A%2F%2Fslides.krwelch.com%2Fcomponent-styling%2F&chld=L|1"
+        />
+      </Fill>
       <Fill>
-        <Text style={{ textAlign: "right" }}>
-          <Image src={images.githubLogo} style={{ height: 30, margin: "0 10px 0" }} />
+        <Text style={{ textAlign: "center" }}>
+          <Image src={images.githubLogo} style={{ height: 30, margin: "0 10px 0" }} /><br />
           /kwelch
         </Text>
       </Fill>
@@ -145,9 +153,10 @@ export default class Presentation extends React.Component {
           <Heading fit textColor="tertiary">What is this talk?</Heading>
           <AppearList
             items={[
-              "Overview of styling over time",
-              "Comparision of new styling approaches",
-              "Slightly baised toward React 😉",
+              "Awareness of styling options",
+              "Preview component driven styling",
+              "Based on experiences as a developer",
+              "First taste of React 😉",
             ]}
           />
         </Slide>
@@ -161,7 +170,7 @@ export default class Presentation extends React.Component {
           </ul>`}
         >
           <Heading fit textColor="secondary">What this talk is NOT?</Heading>
-          <AppearList items={["Declaring a champion", "Project Integration", "Q&A"]} />
+          <AppearList items={["Declaring a champion", "Project Integration", "Q&A Session"]} />
         </Slide>
         <Slide
           transition={["slide"]}
@@ -176,20 +185,44 @@ export default class Presentation extends React.Component {
           <Text textColor="primary">(Abridged)</Text>
           <Layout>
             <Fill>
+              <Appear><Image src={images.styledForm} width={400} /></Appear>
+            </Fill>
+            <Fill>
               <Appear>
-                <CodePane lang="css" source={examples.OGCss} margin="20px auto" />
+                <CodePane lang="css" source={examples.OGCss} />
+              </Appear>
+            </Fill>
+          </Layout>
+        </Slide>
+        <Slide
+          transition={["fade"]}
+          bgColor="codePaneBg"
+          notes={`<ul>
+          <li>OG CSS - Global Namespace, loads of !important, naming and collision issues</li>
+          <li>BEM - Better, still global, but better name collision</li>
+          <li>SASS - Variables, mixins, nesting, but requires preprocessing step</li>
+          </ul>`}
+        >
+          <Heading textColor="tertiary">History of CSS</Heading>
+          <Text textColor="primary">(Abridged)</Text>
+          <Layout>
+            <Fill>
+              <Appear>
+                <CodePane lang="css" source={examples.BEM} />
               </Appear>
             </Fill>
             <Fill>
               <Appear>
-                <CodePane lang="css" source={examples.BEM} margin="20px auto" />
+                <CodePane lang="css" source={examples.Sass} />
               </Appear>
             </Fill>
-            <Fill>
-              <Appear>
-                <CodePane lang="css" source={examples.Sass} margin="20px auto" />
-              </Appear>
-            </Fill>
+          </Layout>
+        </Slide>
+        <Slide transition={["fade"]} bgColor="primary">
+          <Heading textColor="tertiary" margin="0rem auto 5rem">Standalone CSS</Heading>
+          <Layout>
+            <Fill>Scope<br /><span style={{ fontSize: "6rem" }}>🌎</span></Fill>
+            <Fill>Team Type<br /><span style={{ fontSize: "6rem" }}>‍👨‍👩‍👧‍👦</span></Fill>
           </Layout>
         </Slide>
 
@@ -218,8 +251,14 @@ export default class Presentation extends React.Component {
               </div>
             </Fill>
           </Layout>
-          <Link textColor="primary" href="https://www.webpackbin.com/bins/-KlJuBapiJHedN20gb5K" target="_blank">
-            Webpack Bin
+          <Link
+            textSize={24}
+            padding="5rem auto 0"
+            textColor="primary"
+            href="https://www.webpackbin.com/bins/-KlJuBapiJHedN20gb5K"
+            target="_blank"
+          >
+            webpack bin
           </Link>
         </Slide>
         <Slide
@@ -238,27 +277,10 @@ export default class Presentation extends React.Component {
           </ul>`}
         >
           <Image src={images.cssModulesLogo} width={200} />
-          <Text margin="0 auto 2rem" textColor="tertiary">Great for: Teams with Designers</Text>
           <Layout>
-            <Fill>
-              <Appear><Text textColor="tertiary">Pros</Text></Appear>
-              <AppearList items={["Scoped classes", "Composition", "Explicit dependencies"]} />
-            </Fill>
-            <Fill style={{ marginLeft: "1rem" }}>
-              <Appear><Text textColor="tertiary">Cons</Text></Appear>
-              <AppearList items={["Requires Build Step", "Packaging", "Multiple Files"]} />
-            </Fill>
+            <Fill>Scope<br /><span style={{ fontSize: "6rem" }}>📄</span></Fill>
+            <Fill>Team Type<br /><span style={{ fontSize: "6rem" }}>🎨</span></Fill>
           </Layout>
-        </Slide>
-        <Slide>
-          <div><Image src={images.concerns} style={{ width: "55vw" }} /></div>
-          <Link
-            textColor="secondary"
-            href="https://twitter.com/MicheleBertoli/status/868078729662279680"
-            target="blank"
-          >
-            Source: Cristiano Rastelli (@areaweb)
-          </Link>
         </Slide>
         <Slide
           transition={["zoom"]}
@@ -293,35 +315,6 @@ export default class Presentation extends React.Component {
           </Link>
         </Slide>
         <Slide
-          bgColor="quartenary"
-          transition={["zoom"]}
-          notes={`<ul>
-            <li>Why List</li>
-          <li>Not great for design teams, but works well for devs</li>
-          <li>Lot of options, different support levels but css-in-js has you covered</li>
-          <li>Code centralized by feature not tech</li>
-          <li>React Native Styling Options, re-enforces the learn once write anywhere</li>
-          </ul>
-          <ul>
-          <li>Why Not List</li>
-          <li>Lint is the works but not ready</li>
-          <li>Extracting to possible, but outside SSR</li>
-          </ul>`}
-        >
-          <Heading lineHeight={1.25} textSize="52px" textColor="primary">css-in-js</Heading>
-          <Text margin="0 auto 2rem" textColor="tertiary">Great for: Dev Teams</Text>
-          <Layout>
-            <Fill>
-              <Appear><Text textColor="tertiary">Pros</Text></Appear>
-              <AppearList items={["CSS Feature Support", "Centralized Component Code", "Native Support"]} />
-            </Fill>
-            <Fill style={{ marginLeft: "1rem" }}>
-              <Appear><Text textColor="tertiary">Cons</Text></Appear>
-              <AppearList items={["No Style Linting", "CSS/JS Cached Together"]} />
-            </Fill>
-          </Layout>
-        </Slide>
-        <Slide
           bgColor="tertiary"
           transition={["fade"]}
           notes={`<ul>
@@ -341,141 +334,56 @@ export default class Presentation extends React.Component {
             textSize="1.75rem"
             style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}
           />
-          <Text textColor="primary" textSize="1rem">Source: https://github.com/MicheleBertoli/css-in-js</Text>
+          <Link href="https://github.com/MicheleBertoli/css-in-js" target="_blank" textColor="primary" textSize="1rem">
+            Source: https://github.com/MicheleBertoli/css-in-js
+          </Link>
         </Slide>
 
-        <Slide>
-          <Heading lineHeight={1.25} textSize="52px" style={{ margin: "0 auto 2rem" }}>Glamorous</Heading>
-          <ComponentPlayground
-            code={examples.glamorous}
-            previewBackgroundColor="#cdcdcd"
-            scope={{
-              glamor: require("glamor").default,
-              glamorous: require("glamorous").default,
-            }}
-          />
+        <Slide bgColor="codePaneBg">
+          <Heading lineHeight={1.25} textSize="52px" margin="0 auto 2rem">Glamorous</Heading>
+          <Layout>
+            <Fill>
+              <CodePane lang="js" source={examples.glamorous} />
+            </Fill>
+            <Fill>
+              <CodePane lang="js" source={examples.container} />
+            </Fill>
+          </Layout>
         </Slide>
-
+        <Slide bgColor="tertiary">
+          <Heading lineHeight={1.25} textSize="52px" margin="0 auto 2rem" textColor="primary">
+            Styled Components
+          </Heading>
+          <Layout style={{ backgroundColor: theme.screen.colors.codePaneBg, border: "2px solid white" }}>
+            <Fill>
+              <CodePane lang="js" source={examples.styleComponents} />
+            </Fill>
+            <Fill>
+              <CodePane lang="js" source={examples.container} />
+            </Fill>
+          </Layout>
+        </Slide>
         <Slide
-          bgColor="tertiary"
+          bgColor="quartenary"
           transition={["zoom"]}
           notes={`<ul>
             <li>Why List</li>
-          <li>Objects allow for a lot: themeing, composition, and dynamic/calculated styles</li>
-          <li>Library it self if just shy of 8kb, and it preformant</li>
-          <li>Developer Centric teams may favor the object syntax, also easily ports from inline react styles</li>
+          <li>Not great for design teams, but works well for devs</li>
+          <li>Lot of options, different support levels but css-in-js has you covered</li>
+          <li>Code centralized by feature not tech</li>
+          <li>React Native Styling Options, re-enforces the learn once write anywhere</li>
           </ul>
           <ul>
           <li>Why Not List</li>
-          <li>Small form factor is negated by (~30kb) of glamor, if size matter this edge if you are already using glamor</li>
-          <li>Younger library only 2mo, adoption is rising, but still has small community</li>
-          <li>Glamor can be used directly, if looking for non-react option</li>
+          <li>Lint is the works but not ready</li>
+          <li>Extracting to possible, but outside SSR</li>
           </ul>`}
         >
-          <Image src={images.glamorousLogo} width={200} />
-          <Text margin="0 auto 2rem" textColor="primary">
-            Great when: Internationalization & Object Literals
-          </Text>
+          <Heading lineHeight={1.25} textSize="52px" textColor="primary">css-in-js</Heading>
           <Layout>
-            <Fill>
-              <Appear><Text textColor="primary">Pros</Text></Appear>
-              <AppearList items={["Object Literals", "Small (~8kB)*"]} />
-            </Fill>
-            <Fill style={{ marginLeft: "1rem" }}>
-              <Appear><Text textColor="primary">Cons</Text></Appear>
-              <AppearList items={["Requires Glamor", "Young Library"]} />
-            </Fill>
+            <Fill>Scope<br /><span style={{ fontSize: "6rem" }}>🎯</span></Fill>
+            <Fill>Team Type<br /><span style={{ fontSize: "6rem" }}>💻</span></Fill>
           </Layout>
-          <Appear>
-            <Text margin="0 auto 2rem" textColor="primary">
-              Non-React Option: Glamor
-            </Text>
-          </Appear>
-        </Slide>
-        <Slide>
-          <Heading lineHeight={1.25} textSize="52px" style={{ margin: "0 auto 2rem" }}>Styled Components</Heading>
-          <ComponentPlayground
-            code={examples.styleComponents}
-            previewBackgroundColor="#cdcdcd"
-            scope={{
-              styled: require("styled-components").default,
-            }}
-          />
-        </Slide>
-
-        <Slide
-          transition={["zoom"]}
-          notes={`<ul>
-            <li>Why List</li>
-          <li>Huge community, 9mo, v2 just released</li>
-          <li>Write CSS directly in js</li>
-          <li>Great Feature of v2, critical css</li>
-          </ul>
-          <ul>
-          <li>Why Not List</li>
-          <li>Much like JSX this adds just another complex looking syntax</li>
-          <li>RTL not support natively, caused introduction of glamorous</li>
-          </ul>`}
-        >
-          <Image src={images.scLogo} width={200} />
-          <Text margin="0 auto 2rem" textColor="tertiary">
-            Great when: Like CSS Syntax
-          </Text>
-          <Layout>
-            <Fill>
-              <Appear><Text textColor="tertiary">Pros</Text></Appear>
-              <AppearList items={["Largely Adopted", "Uses CSS Syntax"]} />
-            </Fill>
-            <Fill style={{ marginLeft: "1rem" }}>
-              <Appear><Text textColor="tertiary">Cons</Text></Appear>
-              <AppearList items={["Fear of Template Literals", "RTL Support"]} />
-            </Fill>
-          </Layout>
-          <Appear>
-            <Text margin="0 auto 2rem" textColor="tertiary">
-              Non-React Option: styled-elements
-            </Text>
-          </Appear>
-        </Slide>
-        <Slide>
-          <Heading>Recap</Heading>
-          <Table textSize={10}>
-            <TableHeader>
-              <TableRow>
-                <TableHeaderItem />
-                <TableHeaderItem>Scoping</TableHeaderItem>
-                <TableHeaderItem>Syntax</TableHeaderItem>
-                <TableHeaderItem>Best Fit</TableHeaderItem>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableHeaderItem textAlign="left">CSS</TableHeaderItem>
-                <TableItem>🌎</TableItem>
-                <TableItem>CSS</TableItem>
-                <TableItem>👨‍👩‍👧‍👦</TableItem>
-              </TableRow>
-              <TableRow>
-                <TableHeaderItem textAlign="left">CSS Modules</TableHeaderItem>
-                <TableItem>📄</TableItem>
-                <TableItem>CSS</TableItem>
-                <TableItem>🎨</TableItem>
-              </TableRow>
-              <TableRow>
-                <TableHeaderItem textAlign="left">Glamorous</TableHeaderItem>
-                <TableItem>🎯</TableItem>
-                <TableItem>Objects</TableItem>
-                <TableItem> 💻 </TableItem>
-              </TableRow>
-              <TableRow>
-                <TableHeaderItem textAlign="left">Styled Components</TableHeaderItem>
-                <TableItem>🎯</TableItem>
-                <TableItem>CSS</TableItem>
-                <TableItem> 💻 </TableItem>
-              </TableRow>
-            </TableBody>
-          </Table>
-          <Appear><Heading textSize={48} textColor="tertiary">You can use them together!</Heading></Appear>
         </Slide>
         <Slide>
           <Heading>Helpful Tools</Heading>
@@ -489,6 +397,36 @@ export default class Presentation extends React.Component {
             ]}
           />
         </Slide>
+        <Slide>
+          <Heading>Recap</Heading>
+          <Table textSize={10}>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderItem />
+                <TableHeaderItem>Scoping</TableHeaderItem>
+                <TableHeaderItem>Team Type</TableHeaderItem>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableHeaderItem textAlign="left">CSS</TableHeaderItem>
+                <TableItem>🌎</TableItem>
+                <TableItem>👨‍👩‍👧‍👦</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableHeaderItem textAlign="left">CSS Modules</TableHeaderItem>
+                <TableItem>📄</TableItem>
+                <TableItem>🎨</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableHeaderItem textAlign="left">css-in-js</TableHeaderItem>
+                <TableItem>🎯</TableItem>
+                <TableItem> 💻 </TableItem>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Appear><Heading textSize={48} textColor="tertiary">You can use them together!</Heading></Appear>
+        </Slide>
         <Slide><Image src={images.sponsors} /></Slide>
         <Slide transition={["zoom"]} bgColor="primary">
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
@@ -498,13 +436,14 @@ export default class Presentation extends React.Component {
             Kyle Welch
           </Text>
           <Link
-            href="http://slides.krwelch.com/component-styling"
+            href="http://slides.krwelch.com/component-styling/"
             margin=".5rem 0 0"
             textColor="tertiary"
             size={0.75}
             italic
           >
-            http://slides.krwelch.com/component-styling
+            http://slides.krwelch.com/component-styling/
+            <Image src="https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=http%3A%2F%2Fslides.krwelch.com%2Fcomponent-styling%2F&chld=L|1" />
           </Link>
           <Layout style={{ marginTop: 100, justifyContent: "space-between" }}>
             <Fill>

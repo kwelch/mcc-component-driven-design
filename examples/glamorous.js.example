@@ -15,13 +15,3 @@ const Container = glamorous.div(
     width
   })
 );
-
-function App() {
-  return (<div>
-  <Container>
-  Hello Music City Code!
-  </Container>
-</div>);
-}
-
-render(<App />, mountNode);

@@ -1,18 +1,24 @@
-// Block, Element, Modifier (BEM) CSS
+/* Block, Element, Modifier (BEM) CSS */
 
-.button {
-	display: inline-block;
-	border-radius: 3px;
-	padding: 7px 12px;
-	border: 1px solid #D5D5D5;
-	background-image: linear-gradient(#EEE, #DDD);
-	font: 700 13px/18px Helvetica, arial;
+.contact-form__legend {
+  border:1px solid #999;
+  position:relative;
+  background-color:#ffffff;
+  padding:3px;
+  margin-left:5px;
+  -moz-box-shadow: 3px 2px 5px #666;
+  -webkit-box-shadow: 3px 2px 5px #666;
+  box-shadow: 3px 2px 5px #666;
 }
-.button--state-success {
-	color: #FFF;
-	background: #569E3D repeat-x;
-	border-color: #4A993E;
+.contact-form__input {
+  margin:0 5px;
+  width:95%;
 }
-.button--state-danger {
-	color: #900;
+
+.contact-form__input--error {
+  border: 1px solid red;
+}
+
+.contact-form__submit-button {
+  float:right; margin-right:15px;
 }

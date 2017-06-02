@@ -1,16 +1,19 @@
-// classic css
+/* classic css */
 
-button {
-  border-radius: 7px;
-  background: #ededed !important;
-  border: 2px solid #9a9a9a;
-  border-top-width: 1px;
-  border-left-width: 1px;
-  font-size: 20px;
+form legend {
+  border:1px solid #999;
+  position:relative;
+  background-color:#ffffff;
+  padding:3px;
+  margin-left:5px;
+  -moz-box-shadow: 3px 2px 5px #666;
+  -webkit-box-shadow: 3px 2px 5px #666;
+  box-shadow: 3px 2px 5px #666;
 }
-
-.my-button {
-  background: red;
-  border-color: black;
-  color:white;
+form label input, form label textarea {
+  margin:0 5px;
+  width:95%;
+}
+form [type=submit] {
+  float:right; margin-right:15px;
 }

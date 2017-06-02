@@ -11,13 +11,3 @@ const Container = styled.div`
     background-color: #334f99;
   }
 `;
-
-function App() {
-  return (<div>
-  <Container>
-  Hello Music City Code!
-  </Container>
-</div>);
-}
-
-render(<App />, mountNode);

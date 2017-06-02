@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist/',
+    publicPath: '/component-styling/',
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -38,17 +38,12 @@ module.exports = {
         loader: 'style-loader!css-loader',
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        loader: 'url-loader?limit=8192',
+        test: /\.(png|jpg|gif|webp)$/,
+        loader: 'url-loader?limit=8192&name=assests/[name].[ext]',
       },
       {
         test: /\.svg$/,
         loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
-      },
-      {
-        test: /\.webp$/,
-        loader: 'url-loader?mimetype=image/webp',
-        include: path.join(__dirname, 'assets'),
       },
     ],
   },
